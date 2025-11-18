@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
 import { FiClock, FiMapPin, FiAward, FiCheck } from "react-icons/fi";
+import Button from "../../../ui/buttons/Button";
+import Badge from "../../../ui/badges/Badge";
 
 const Hero = () => {
   return (
@@ -55,9 +56,10 @@ const Hero = () => {
           {/* Right Section - Content */}
           <div className="space-y-8 relative z-10 order-1 lg:order-2 lg:pl-8">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-golden-amber/10 border border-golden-amber/20 mb-4 animate-fade-in-up">
-              <FiCheck className="w-4 h-4 text-golden-amber" />
-              <span className="text-sm font-semibold text-charcoal-grey">Authentic Nepali Cuisine</span>
+            <div className="mb-4 animate-fade-in-up">
+              <Badge icon={FiCheck} variant="default">
+                Authentic Nepali Cuisine
+              </Badge>
             </div>
 
             {/* Main Heading */}
@@ -80,20 +82,13 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 pt-4 animate-fade-in-up" style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}>
-              <Link
-                to="/menu"
-                className="px-8 py-4 rounded-xl bg-deep-maroon text-white font-bold text-base hover:bg-[#7a2533] hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg flex items-center gap-2 group"
-              >
-                <span>Order Now</span>
-                <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
-              </Link>
+              <Button variant="primary" size="md" to="/menu">
+                Order Now →
+              </Button>
               
-              <Link
-                to="/menu"
-                className="px-8 py-4 rounded-xl border-2 border-deep-maroon text-deep-maroon font-bold text-base hover:bg-deep-maroon hover:text-white transition-all duration-300 bg-white/80 backdrop-blur-sm"
-              >
+              <Button variant="secondary" size="md" to="/menu">
                 View Menu
-              </Link>
+              </Button>
             </div>
 
             {/* Feature Highlights - Card Style */}
