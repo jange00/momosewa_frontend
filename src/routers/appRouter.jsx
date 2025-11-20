@@ -7,6 +7,7 @@ import LandingPage from "../pages/LandingPage";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
 
+
 export const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -17,6 +18,7 @@ export const router = createBrowserRouter([
         element: <LandingPage />,
       },
       {
+
         path: "/login",
         element: <LoginPage />,
       },
@@ -32,6 +34,7 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <SignupPage />,
       },
+
     ],
   },
   {
