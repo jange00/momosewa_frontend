@@ -4,6 +4,9 @@ import NotFound from "../components/NotFound/NotFound";
 import ProtectedRoute from "./adminGuard";
 import AdminLayout from "../layouts/AdminLayout";
 import LandingPage from "../pages/LandingPage";
+import LoginPage from "../pages/LoginPage";
+import SignupPage from "../pages/SignupPage";
+import CartPage from "../pages/CartPage";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +16,26 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <LandingPage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/sign-in",
+        element: <LoginPage />,
+      },
+      {
+        path: "/signup",
+        element: <SignupPage />,
+      },
+      {
+        path: "/register",
+        element: <SignupPage />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
       },
     ],
   },
