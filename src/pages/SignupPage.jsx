@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
-import SignupPromo from "../features/auth/components/SignupPromo";
-import SignupForm from "../features/auth/components/SignupForm";
+import SignupPromo from "../features/auth/components/signup/SignupPromo";
+import SignupForm from "../features/auth/components/signup/SignupForm";
 import Footer from "../features/landing/components/Footer";
 
 const SignupPage = () => {

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { FiMail, FiLock, FiPhone } from "react-icons/fi";
-import { IMAGE_PATHS } from "../../../common/imageConstant";
-import Input from "../../../ui/inputs/Input";
-import Checkbox from "../../../ui/inputs/Checkbox";
-import Button from "../../../ui/buttons/Button";
+import { IMAGE_PATHS } from "../../../../common/imageConstant";
+import Input from "../../../../ui/inputs/Input";
+import Checkbox from "../../../../ui/inputs/Checkbox";
+import Button from "../../../../ui/buttons/Button";
 
 const LoginForm = ({ formData, errors, isLoading, handleChange, handleSubmit, handleGoogleLogin }) => {
   // Determine if input is email or phone

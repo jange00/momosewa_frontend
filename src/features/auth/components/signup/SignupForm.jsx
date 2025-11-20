@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { FiMail, FiLock, FiPhone, FiUser } from "react-icons/fi";
-import { IMAGE_PATHS } from "../../../common/imageConstant";
-import Input from "../../../ui/inputs/Input";
-import Button from "../../../ui/buttons/Button";
+import { IMAGE_PATHS } from "../../../../common/imageConstant";
+import Input from "../../../../ui/inputs/Input";
+import Button from "../../../../ui/buttons/Button";
 
 const SignupForm = ({ 
   formData, 
