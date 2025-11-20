@@ -100,7 +100,7 @@ const LoginPage = () => {
         <div className="w-full max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-0 bg-white rounded-2xl shadow-xl overflow-hidden border border-charcoal-grey/10">
           {/* Left Section - Clean & Simple */}
-          <div className="hidden lg:flex relative bg-gradient-to-br from-deep-maroon via-[#7a2533] to-[#6a1f2d] p-12 xl:p-14 flex flex-col justify-center overflow-hidden">
+          <div className="hidden lg:flex relative bg-gradient-to-br from-deep-maroon via-[#7a2533] to-[#6a1f2d] p-8 xl:p-10 flex flex-col justify-center overflow-hidden">
             {/* Subtle Background Elements */}
             <div className="absolute inset-0 overflow-hidden">
               <div className="absolute top-20 right-20 w-96 h-96 bg-golden-amber/5 rounded-full blur-3xl"></div>
@@ -110,7 +110,7 @@ const LoginPage = () => {
             {/* Content */}
             <div className="relative z-10 text-white">
               {/* Brand Name */}
-              <div className="mb-12">
+              <div className="mb-8">
                 <h2 className="text-4xl xl:text-5xl font-black text-golden-amber mb-2">
                   Momo<span className="text-white">Sewa</span>
                 </h2>
@@ -118,11 +118,11 @@ const LoginPage = () => {
               </div>
 
               {/* Welcome Section */}
-              <div className="mb-10">
-                <h1 className="text-5xl xl:text-6xl font-black mb-4 leading-tight">
+              <div className="mb-8">
+                <h1 className="text-5xl xl:text-6xl font-black mb-3 leading-tight">
                   Welcome Back
                 </h1>
-                <p className="text-white/80 text-lg mb-6">
+                <p className="text-white/80 text-lg mb-4">
                   Sign in with your MomoSewa credentials
                 </p>
                 <div className="inline-block px-5 py-2.5 bg-golden-amber/20 rounded-full border border-golden-amber/30">
@@ -131,41 +131,25 @@ const LoginPage = () => {
               </div>
 
               {/* Feature Box */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-golden-amber/20 mb-10">
-                <h3 className="text-2xl font-bold text-white mb-3">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-golden-amber/20 mb-8">
+                <h3 className="text-xl font-bold text-white mb-2">
                   Access MomoSewa Platform
                 </h3>
-                <p className="text-white/80 text-base leading-relaxed mb-4">
+                <p className="text-white/80 text-sm leading-relaxed mb-3">
                   Manage your orders, track deliveries in real-time, customize your momo preferences, and unlock premium features for the best momo experience.
                 </p>
-                <div className="pt-4 border-t border-white/10">
-                  <p className="text-golden-amber text-base font-semibold italic">
+                <div className="pt-3 border-t border-white/10">
+                  <p className="text-golden-amber text-sm font-semibold italic">
                     "ताजा मोमो, तुरुन्त वितरण"
                   </p>
-                  <p className="text-white/60 text-sm mt-1">Fresh Momos, Instant Delivery</p>
-                </div>
-              </div>
-
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 mb-10">
-                <div className="text-center">
-                  <div className="text-4xl font-black text-golden-amber mb-2">10K+</div>
-                  <div className="text-sm text-white/60">Customers</div>
-                </div>
-                <div className="text-center border-l border-r border-white/10">
-                  <div className="text-4xl font-black text-golden-amber mb-2">500+</div>
-                  <div className="text-sm text-white/60">Vendors</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-black text-golden-amber mb-2">4.8★</div>
-                  <div className="text-sm text-white/60">Rating</div>
+                  <p className="text-white/60 text-xs mt-1">Fresh Momos, Instant Delivery</p>
                 </div>
               </div>
 
               {/* Bottom Section */}
-              <div className="pt-8 border-t border-white/10">
+              <div className="pt-6 border-t border-white/10">
                 <p className="text-white/60 text-xs mb-2 uppercase tracking-wider">Trusted By</p>
-                <p className="text-white font-bold text-xl mb-2">Customers & Vendors</p>
+                <p className="text-white font-bold text-lg mb-2">Customers & Vendors</p>
                 <p className="text-golden-amber/90 text-sm font-medium">
                   "हाम्रो ग्राहक हाम्रो परिवार"
                 </p>
