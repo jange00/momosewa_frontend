@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
-import LoginPromo from "../features/auth/components/LoginPromo";
+import SignupPromo from "../features/auth/components/SignupPromo";
 import SignupForm from "../features/auth/components/SignupForm";
 import Footer from "../features/landing/components/Footer";
 
@@ -16,8 +16,6 @@ const SignupPage = () => {
   });
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps = 5; // Name, Email, Phone, Password, Confirm Password
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,18 +27,6 @@ const SignupPage = () => {
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
-    // Update progress based on filled fields
-    updateProgress();
-  };
-
-  const updateProgress = () => {
-    let filledFields = 0;
-    if (formData.name.trim()) filledFields++;
-    if (formData.email.trim()) filledFields++;
-    if (formData.phone.trim()) filledFields++;
-    if (formData.password) filledFields++;
-    if (formData.confirmPassword) filledFields++;
-    setCurrentStep(filledFields);
   };
 
   const validateForm = () => {
@@ -118,20 +104,18 @@ const SignupPage = () => {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex items-center justify-center py-8 px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="flex-1 flex items-center justify-center py-3 px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Compact Professional Container */}
         <div className="w-full max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-0 bg-white rounded-2xl shadow-xl overflow-hidden border border-charcoal-grey/10">
             {/* Left Section - Promotional */}
-            <LoginPromo />
+            <SignupPromo />
 
             {/* Right Section - Signup Form */}
             <SignupForm
               formData={formData}
               errors={errors}
               isLoading={isLoading}
-              currentStep={currentStep}
-              totalSteps={totalSteps}
               handleChange={handleChange}
               handleSubmit={handleSubmit}
               handleGoogleSignup={handleGoogleSignup}

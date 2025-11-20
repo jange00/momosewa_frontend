@@ -8,25 +8,23 @@ const SignupForm = ({
   formData, 
   errors, 
   isLoading, 
-  currentStep,
-  totalSteps,
   handleChange, 
   handleSubmit, 
   handleGoogleSignup
 }) => {
   return (
-    <div className="flex items-center justify-center p-6 lg:p-8 bg-white">
+    <div className="flex items-center justify-center p-3 lg:p-4 bg-white">
       <div className="w-full max-w-md">
         {/* Header */}
-        <div className="text-center mb-6">
-          <div className="flex justify-center mb-4 lg:hidden">
+        <div className="text-center mb-3">
+          <div className="flex justify-center mb-2 lg:hidden">
             <img 
               src={IMAGE_PATHS.LOGO} 
               alt="MomoSewa Logo" 
               className="w-16 h-16 object-contain"
             />
           </div>
-          <h1 className="text-2xl lg:text-3xl font-black text-charcoal-grey mb-2">
+          <h1 className="text-2xl lg:text-3xl font-black text-charcoal-grey mb-1.5">
             Create Account
           </h1>
           <p className="text-charcoal-grey/70 text-sm">
@@ -34,27 +32,9 @@ const SignupForm = ({
           </p>
         </div>
 
-        {/* Progress Indicator */}
-        <div className="mb-6">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-semibold text-charcoal-grey">
-              Step {currentStep} of {totalSteps}
-            </span>
-            <span className="text-xs text-charcoal-grey/60">
-              {Math.round((currentStep / totalSteps) * 100)}%
-            </span>
-          </div>
-          <div className="w-full bg-charcoal-grey/10 rounded-full h-2">
-            <div 
-              className="bg-gradient-to-r from-deep-maroon to-golden-amber h-2 rounded-full transition-all duration-500"
-              style={{ width: `${(currentStep / totalSteps) * 100}%` }}
-            ></div>
-          </div>
-        </div>
-
         {/* Signup Form */}
-        <div className="bg-white rounded-xl border border-charcoal-grey/10 p-6 lg:p-8 shadow-sm">
-          <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="bg-white rounded-xl border border-charcoal-grey/10 p-3 lg:p-4 shadow-sm">
+          <form onSubmit={handleSubmit} className="space-y-3">
             {/* Name Input */}
             <Input
               label="Full Name"
@@ -132,7 +112,7 @@ const SignupForm = ({
             </Button>
 
             {/* Divider */}
-            <div className="relative my-5">
+            <div className="relative my-3">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-charcoal-grey/15"></div>
               </div>
@@ -188,7 +168,7 @@ const SignupForm = ({
         </div>
 
         {/* Footer Note */}
-        <p className="text-center text-xs text-charcoal-grey/50 mt-6">
+        <p className="text-center text-xs text-charcoal-grey/50 mt-3">
           By signing up, you agree to our{" "}
           <Link to="/terms" className="text-deep-maroon hover:underline">
             Terms of Service
