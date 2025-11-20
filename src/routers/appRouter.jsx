@@ -4,7 +4,7 @@ import NotFound from "../components/NotFound/NotFound";
 import ProtectedRoute from "./adminGuard";
 import AdminLayout from "../layouts/AdminLayout";
 import LandingPage from "../pages/LandingPage";
-import LoginPage from "../features/auth/pages/LoginPage";
+import LoginPage from "../pages/LoginPage";
 
 export const router = createBrowserRouter([
   {
