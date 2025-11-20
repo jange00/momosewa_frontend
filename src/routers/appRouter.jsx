@@ -5,6 +5,7 @@ import ProtectedRoute from "./adminGuard";
 import AdminLayout from "../layouts/AdminLayout";
 import LandingPage from "../pages/LandingPage";
 import LoginPage from "../pages/LoginPage";
+import SignupPage from "../pages/SignupPage";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,14 @@ export const router = createBrowserRouter([
       {
         path: "/sign-in",
         element: <LoginPage />,
+      },
+      {
+        path: "/signup",
+        element: <SignupPage />,
+      },
+      {
+        path: "/register",
+        element: <SignupPage />,
       },
     ],
   },
