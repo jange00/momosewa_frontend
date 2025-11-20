@@ -4,6 +4,7 @@ import NotFound from "../components/NotFound/NotFound";
 import ProtectedRoute from "./adminGuard";
 import AdminLayout from "../layouts/AdminLayout";
 import LandingPage from "../pages/LandingPage";
+import LoginPage from "../features/auth/pages/LoginPage";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +14,14 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <LandingPage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/sign-in",
+        element: <LoginPage />,
       },
     ],
   },
