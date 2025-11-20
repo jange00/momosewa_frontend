@@ -6,9 +6,7 @@ import AdminLayout from "../layouts/AdminLayout";
 import LandingPage from "../pages/LandingPage";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
-import CartPage from "../pages/CartPage";
-import CheckoutPage from "../pages/CheckoutPage";
-import MenuPage from "../pages/MenuPage";
+
 
 export const router = createBrowserRouter([
   {
@@ -20,10 +18,7 @@ export const router = createBrowserRouter([
         element: <LandingPage />,
       },
       {
-        path: "/menu",
-        element: <MenuPage />,
-      },
-      {
+
         path: "/login",
         element: <LoginPage />,
       },
@@ -39,14 +34,7 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <SignupPage />,
       },
-      {
-        path: "/cart",
-        element: <CartPage />,
-      },
-      {
-        path: "/checkout",
-        element: <CheckoutPage />,
-      },
+
     ],
   },
   {
