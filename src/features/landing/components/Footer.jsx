@@ -49,12 +49,12 @@ const Footer = () => {
             <h4 className="font-bold text-lg mb-4">For Vendors</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/vendor/register" className="text-white/70 hover:text-golden-amber transition-colors">
+                <Link to="/signup/vendor" className="text-white/70 hover:text-golden-amber transition-colors">
                   Become a Vendor
                 </Link>
               </li>
               <li>
-                <Link to="/vendor/login" className="text-white/70 hover:text-golden-amber transition-colors">
+                <Link to="/login" className="text-white/70 hover:text-golden-amber transition-colors">
                   Vendor Login
                 </Link>
               </li>

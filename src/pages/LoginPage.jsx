@@ -4,6 +4,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import LoginPromo from "../features/auth/components/login/LoginPromo";
 import LoginForm from "../features/auth/components/login/LoginForm";
 import Footer from "../features/landing/components/Footer";
+import { ROLE_DASHBOARD_ROUTES, USER_ROLES } from "../common/roleConstants";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -58,23 +59,56 @@ const LoginPage = () => {
 
     setIsLoading(true);
     
-    // Simulate API call
+    // Simulate API call - In real app, API will return user role and token
     setTimeout(() => {
       console.log("Login attempt:", formData);
+      
+      // TODO: In production, replace this with actual API call
+      // const response = await api.post('/auth/login', formData);
+      // const { user, token, role } = response.data;
+      // localStorage.setItem('token', token);
+      // localStorage.setItem('role', role);
+      
+      // Get role from localStorage (in real app, this comes from API response)
+      const userRole = localStorage.getItem("role");
+      
       setIsLoading(false);
-      // Navigate to dashboard or home after successful login
-      navigate("/");
+      
+      // Redirect based on user role
+      if (userRole && ROLE_DASHBOARD_ROUTES[userRole]) {
+        navigate(ROLE_DASHBOARD_ROUTES[userRole]);
+      } else {
+        // Default to landing page if no role is set
+        // In production, you might want to show an error or redirect to signup
+        navigate("/");
+      }
     }, 1000);
   };
 
   const handleGoogleLogin = useGoogleLogin({
-    onSuccess: (tokenResponse) => {
+    onSuccess: async (tokenResponse) => {
       console.log("Google login success:", tokenResponse);
-      // Handle Google login success
-      navigate("/");
+      
+      // TODO: In production, send token to backend to get user role
+      // const response = await api.post('/auth/google', { token: tokenResponse.access_token });
+      // const { user, token, role } = response.data;
+      // localStorage.setItem('token', token);
+      // localStorage.setItem('role', role);
+      
+      // For now, get role from localStorage
+      // In production, role should come from API response
+      const userRole = localStorage.getItem("role");
+      
+      if (userRole && ROLE_DASHBOARD_ROUTES[userRole]) {
+        navigate(ROLE_DASHBOARD_ROUTES[userRole]);
+      } else {
+        // No role found - might need to complete profile or select role
+        navigate("/");
+      }
     },
     onError: () => {
       console.error("Google login failed");
+      // TODO: Show error toast/notification to user
     },
   });
 

@@ -1,81 +1,106 @@
 import { Link } from "react-router-dom";
-import { FiMail, FiLock, FiPhone } from "react-icons/fi";
+import { FiMail, FiLock, FiPhone, FiUser } from "react-icons/fi";
 import { IMAGE_PATHS } from "../../../../common/imageConstant";
 import Input from "../../../../ui/inputs/Input";
-import Checkbox from "../../../../ui/inputs/Checkbox";
 import Button from "../../../../ui/buttons/Button";
 
-const LoginForm = ({ formData, errors, isLoading, handleChange, handleSubmit, handleGoogleLogin }) => {
-  // Determine if input is email or phone
-  const isEmail = formData.emailOrPhone.includes("@");
-  const InputIcon = isEmail ? FiMail : FiPhone;
-
+const CustomerSignupForm = ({ 
+  formData, 
+  errors, 
+  isLoading, 
+  handleChange, 
+  handleSubmit, 
+  handleGoogleSignup
+}) => {
   return (
-    <div className="flex items-center justify-center p-6 lg:p-8 bg-white">
+    <div className="flex items-center justify-center p-3 lg:p-4 bg-white">
       <div className="w-full max-w-md">
         {/* Header */}
-        <div className="text-center mb-6">
-          <div className="flex justify-center mb-4 lg:hidden">
+        <div className="text-center mb-3">
+          <div className="flex justify-center mb-2 lg:hidden">
             <img 
               src={IMAGE_PATHS.LOGO} 
               alt="MomoSewa Logo" 
               className="w-16 h-16 object-contain"
             />
           </div>
-          <h1 className="text-2xl lg:text-3xl font-black text-charcoal-grey mb-2">
-            Welcome Back
+          <h1 className="text-2xl lg:text-3xl font-black text-charcoal-grey mb-1.5">
+            Customer Sign Up
           </h1>
           <p className="text-charcoal-grey/70 text-sm">
-            Sign in to your MomoSewa account (Customer, Vendor, or Admin)
+            Create your customer account to start ordering
           </p>
         </div>
 
-        {/* Login Form */}
-        <div className="bg-white rounded-xl border border-charcoal-grey/10 p-6 lg:p-8 shadow-sm">
-          <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Email/Phone Input */}
+        {/* Signup Form */}
+        <div className="bg-white rounded-xl border border-charcoal-grey/10 p-3 lg:p-4 shadow-sm">
+          <form onSubmit={handleSubmit} className="space-y-3">
+            {/* Name Input */}
             <Input
-              label="Email or Phone"
+              label="Full Name"
               type="text"
-              name="emailOrPhone"
-              placeholder="Enter your email or phone number"
-              value={formData.emailOrPhone}
+              placeholder="Enter your full name"
+              value={formData.name}
               onChange={handleChange}
-              error={errors.emailOrPhone}
-              icon={InputIcon}
+              error={errors.name}
+              icon={FiUser}
               required
+              name="name"
+            />
+
+            {/* Email Input */}
+            <Input
+              label="Email"
+              type="email"
+              placeholder="Enter your email address"
+              value={formData.email}
+              onChange={handleChange}
+              error={errors.email}
+              icon={FiMail}
+              required
+              name="email"
+            />
+
+            {/* Phone Input */}
+            <Input
+              label="Phone Number"
+              type="tel"
+              placeholder="Enter your phone number"
+              value={formData.phone}
+              onChange={handleChange}
+              error={errors.phone}
+              icon={FiPhone}
+              required
+              name="phone"
             />
 
             {/* Password Input */}
             <Input
               label="Password"
               type="password"
-              name="password"
-              placeholder="Enter your password"
+              placeholder="Create a password"
               value={formData.password}
               onChange={handleChange}
               error={errors.password}
               icon={FiLock}
               required
+              name="password"
             />
 
-            {/* Remember Me & Forgot Password */}
-            <div className="flex items-center justify-between">
-              <Checkbox
-                label="Remember Me"
-                name="rememberMe"
-                checked={formData.rememberMe}
-                onChange={handleChange}
-              />
-              <Link
-                to="/forgot-password"
-                className="text-sm font-semibold text-deep-maroon hover:text-golden-amber transition-colors duration-200"
-              >
-                Forgot Password?
-              </Link>
-            </div>
+            {/* Confirm Password Input */}
+            <Input
+              label="Confirm Password"
+              type="password"
+              placeholder="Confirm your password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              error={errors.confirmPassword}
+              icon={FiLock}
+              required
+              name="confirmPassword"
+            />
 
-            {/* Login Button */}
+            {/* Signup Button */}
             <Button
               type="submit"
               variant="primary"
@@ -83,11 +108,11 @@ const LoginForm = ({ formData, errors, isLoading, handleChange, handleSubmit, ha
               className="w-full"
               disabled={isLoading}
             >
-              {isLoading ? "Signing in..." : "Sign In"}
+              {isLoading ? "Creating Account..." : "Create Customer Account"}
             </Button>
 
             {/* Divider */}
-            <div className="relative my-5">
+            <div className="relative my-3">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-charcoal-grey/15"></div>
               </div>
@@ -98,10 +123,10 @@ const LoginForm = ({ formData, errors, isLoading, handleChange, handleSubmit, ha
               </div>
             </div>
 
-            {/* Google Login Button */}
+            {/* Google Signup Button */}
             <button
               type="button"
-              onClick={() => handleGoogleLogin()}
+              onClick={() => handleGoogleSignup()}
               className="w-full flex items-center justify-center gap-3 px-6 py-3 border-2 border-charcoal-grey/20 rounded-xl bg-white hover:bg-charcoal-grey/5 hover:border-golden-amber/40 transition-all duration-300 group"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -127,15 +152,15 @@ const LoginForm = ({ formData, errors, isLoading, handleChange, handleSubmit, ha
               </span>
             </button>
 
-            {/* Sign Up Link */}
+            {/* Sign In Link */}
             <div className="text-center pt-2">
               <p className="text-sm text-charcoal-grey/70">
-                Don't have an account?{" "}
+                Already have an account?{" "}
                 <Link
-                  to="/register"
+                  to="/login"
                   className="font-semibold text-deep-maroon hover:text-golden-amber transition-colors duration-200"
                 >
-                  Sign Up
+                  Sign In
                 </Link>
               </p>
             </div>
@@ -143,8 +168,8 @@ const LoginForm = ({ formData, errors, isLoading, handleChange, handleSubmit, ha
         </div>
 
         {/* Footer Note */}
-        <p className="text-center text-xs text-charcoal-grey/50 mt-6">
-          By signing in, you agree to our{" "}
+        <p className="text-center text-xs text-charcoal-grey/50 mt-3">
+          By signing up, you agree to our{" "}
           <Link to="/terms" className="text-deep-maroon hover:underline">
             Terms of Service
           </Link>{" "}
@@ -158,5 +183,5 @@ const LoginForm = ({ formData, errors, isLoading, handleChange, handleSubmit, ha
   );
 };
 
-export default LoginForm;
+export default CustomerSignupForm;
 

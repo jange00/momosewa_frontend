@@ -22,7 +22,7 @@ const CTA = () => {
           <Button variant="outline" size="lg" to="/menu">
             Order Now
           </Button>
-          <Button variant="outline" size="lg" to="/vendor/register">
+          <Button variant="outline" size="lg" to="/signup/vendor">
             Become a Vendor
           </Button>
         </div>
