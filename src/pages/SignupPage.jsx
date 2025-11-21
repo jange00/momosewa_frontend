@@ -1,134 +1,69 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useGoogleLogin } from "@react-oauth/google";
-import SignupPromo from "../features/auth/components/signup/SignupPromo";
-import SignupForm from "../features/auth/components/signup/SignupForm";
-import Footer from "../features/landing/components/Footer";
+import { Link } from "react-router-dom";
+import Button from "../ui/buttons/Button";
+import Input from "../ui/inputs/Input";
+import { FiMail, FiLock, FiUser } from "react-icons/fi";
 
 const SignupPage = () => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    password: "",
-    confirmPassword: "",
-  });
-  const [errors, setErrors] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    } else if (formData.name.trim().length < 2) {
-      newErrors.name = "Name must be at least 2 characters";
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[\w\.-]+@[\w\.-]+\.\w+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
-    }
-
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    } else if (!/^\+?[\d\s-()]{10,}$/.test(formData.phone)) {
-      newErrors.phone = "Please enter a valid phone number";
-    }
-
-    if (!formData.password) {
-      newErrors.password = "Password is required";
-    } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
-    }
-
-    if (!formData.confirmPassword) {
-      newErrors.confirmPassword = "Please confirm your password";
-    } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!validateForm()) {
-      return;
-    }
-
-    setIsLoading(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      console.log("Signup attempt:", formData);
-      setIsLoading(false);
-      // Navigate to login or dashboard after successful signup
-      navigate("/login");
-    }, 1000);
-  };
-
-  const handleGoogleSignup = useGoogleLogin({
-    onSuccess: (tokenResponse) => {
-      console.log("Google signup success:", tokenResponse);
-      // Handle Google signup success
-      navigate("/");
-    },
-    onError: () => {
-      console.error("Google signup failed");
-    },
-  });
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-charcoal-grey/5 via-white to-golden-amber/5 flex flex-col relative overflow-hidden">
-      {/* Subtle Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-20 w-64 h-64 bg-deep-maroon/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-golden-amber/5 rounded-full blur-3xl"></div>
-      </div>
-
-      {/* Main Content Area */}
-      <div className="flex-1 flex items-center justify-center py-3 px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Compact Professional Container */}
-        <div className="w-full max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-0 bg-white rounded-2xl shadow-xl overflow-hidden border border-charcoal-grey/10">
-            {/* Left Section - Promotional */}
-            <SignupPromo />
-
-            {/* Right Section - Signup Form */}
-            <SignupForm
-              formData={formData}
-              errors={errors}
-              isLoading={isLoading}
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
-              handleGoogleSignup={handleGoogleSignup}
+    <div className="min-h-screen bg-gradient-to-br from-charcoal-grey/3 via-white to-golden-amber/5 flex items-center justify-center py-12 px-4">
+      <div className="w-full max-w-md">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-charcoal-grey/10 p-8 shadow-xl">
+          <h1 className="text-3xl font-black text-charcoal-grey mb-2">Create Account</h1>
+          <p className="text-charcoal-grey/60 mb-8">Sign up to start ordering from MomoSewa</p>
+          
+          <form className="space-y-6">
+            <Input
+              type="text"
+              placeholder="Full name"
+              icon={FiUser}
             />
+            <Input
+              type="email"
+              placeholder="Email address"
+              icon={FiMail}
+            />
+            <Input
+              type="password"
+              placeholder="Password"
+              icon={FiLock}
+            />
+            <Input
+              type="password"
+              placeholder="Confirm password"
+              icon={FiLock}
+            />
+            
+            <div className="flex items-start gap-2 text-sm">
+              <input type="checkbox" className="mt-1 rounded border-charcoal-grey/20" />
+              <label className="text-charcoal-grey/70">
+                I agree to the{" "}
+                <Link to="/terms" className="text-deep-maroon hover:underline">
+                  Terms & Conditions
+                </Link>{" "}
+                and{" "}
+                <Link to="/privacy" className="text-deep-maroon hover:underline">
+                  Privacy Policy
+                </Link>
+              </label>
+            </div>
+            
+            <Button variant="primary" size="md" className="w-full">
+              Create Account
+            </Button>
+          </form>
+          
+          <div className="mt-6 text-center">
+            <p className="text-charcoal-grey/60 text-sm">
+              Already have an account?{" "}
+              <Link to="/login" className="text-deep-maroon hover:underline font-semibold">
+                Sign in
+              </Link>
+            </p>
           </div>
         </div>
       </div>
-
-      {/* Footer Below */}
-      <Footer />
     </div>
   );
 };
 
 export default SignupPage;
-

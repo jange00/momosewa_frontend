@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
@@ -111,41 +112,52 @@ const LoginPage = () => {
       // TODO: Show error toast/notification to user
     },
   });
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-charcoal-grey/5 via-white to-golden-amber/5 flex flex-col relative overflow-hidden">
-      {/* Subtle Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-20 w-64 h-64 bg-deep-maroon/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-golden-amber/5 rounded-full blur-3xl"></div>
-      </div>
-
-      {/* Main Content Area */}
-      <div className="flex-1 flex items-center justify-center py-8 px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Compact Professional Container */}
-        <div className="w-full max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-0 bg-white rounded-2xl shadow-xl overflow-hidden border border-charcoal-grey/10">
-            {/* Left Section - Promotional */}
-            <LoginPromo />
-
-            {/* Right Section - Login Form */}
-            <LoginForm
-              formData={formData}
-              errors={errors}
-              isLoading={isLoading}
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
-              handleGoogleLogin={handleGoogleLogin}
+    <div className="min-h-screen bg-gradient-to-br from-charcoal-grey/3 via-white to-golden-amber/5 flex items-center justify-center py-12 px-4">
+      <div className="w-full max-w-md">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-charcoal-grey/10 p-8 shadow-xl">
+          <h1 className="text-3xl font-black text-charcoal-grey mb-2">Welcome Back</h1>
+          <p className="text-charcoal-grey/60 mb-8">Sign in to continue to MomoSewa</p>
+          
+          <form className="space-y-6">
+            <Input
+              type="email"
+              placeholder="Email address"
+              icon={FiMail}
             />
+            <Input
+              type="password"
+              placeholder="Password"
+              icon={FiLock}
+            />
+            
+            <div className="flex items-center justify-between text-sm">
+              <label className="flex items-center gap-2 text-charcoal-grey/70 cursor-pointer">
+                <input type="checkbox" className="rounded border-charcoal-grey/20" />
+                <span>Remember me</span>
+              </label>
+              <Link to="/forgot-password" className="text-deep-maroon hover:underline font-medium">
+                Forgot password?
+              </Link>
+            </div>
+            
+            <Button variant="primary" size="md" className="w-full">
+              Sign In
+            </Button>
+          </form>
+          
+          <div className="mt-6 text-center">
+            <p className="text-charcoal-grey/60 text-sm">
+              Don't have an account?{" "}
+              <Link to="/signup" className="text-deep-maroon hover:underline font-semibold">
+                Sign up
+              </Link>
+            </p>
           </div>
         </div>
       </div>
-
-      {/* Footer Below */}
-      <Footer />
     </div>
   );
 };
 
 export default LoginPage;
-

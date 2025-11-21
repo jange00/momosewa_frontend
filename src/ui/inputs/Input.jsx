@@ -1,74 +1,30 @@
-import { FiEye, FiEyeOff } from "react-icons/fi";
-import { useState } from "react";
-
-const Input = ({
-  label,
+const Input = ({ 
   type = "text",
-  placeholder,
-  value,
+  placeholder = "",
+  value = "",
   onChange,
-  error,
-  icon: Icon,
   className = "",
-  required = false,
-  ...props
+  icon: Icon,
+  ...props 
 }) => {
-  const [showPassword, setShowPassword] = useState(false);
-  const isPassword = type === "password";
-  const inputType = isPassword && showPassword ? "text" : type;
-
   return (
-    <div className={`w-full ${className}`}>
-      {label && (
-        <label className="block text-sm font-semibold text-charcoal-grey mb-2">
-          {label}
-          {required && <span className="text-deep-maroon ml-1">*</span>}
-        </label>
+    <div className="relative w-full group">
+      {Icon && (
+        <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+          <Icon className="w-5 h-5 text-charcoal-grey/35 group-focus-within:text-golden-amber transition-colors duration-300" />
+        </div>
       )}
-      <div className="relative group">
-        {Icon && (
-          <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
-            <Icon className="w-5 h-5 text-charcoal-grey/40 group-focus-within:text-golden-amber transition-colors duration-300" />
-          </div>
-        )}
-        <input
-          type={inputType}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          className={`
-            w-full px-4 ${Icon ? 'pl-12' : ''} ${isPassword ? 'pr-12' : ''} py-3.5
-            border border-charcoal-grey/15 rounded-xl
-            focus:outline-none focus:ring-2 focus:ring-golden-amber/25 focus:border-golden-amber/40
-            text-charcoal-grey bg-white/80 backdrop-blur-sm
-            hover:bg-white hover:border-charcoal-grey/25
-            transition-all duration-300
-            placeholder:text-charcoal-grey/35
-            text-sm font-medium
-            ${error ? 'border-red-500 focus:border-red-500 focus:ring-red-500/25' : ''}
-          `}
-          {...props}
-        />
-        {isPassword && (
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="absolute inset-y-0 right-0 flex items-center pr-4 text-charcoal-grey/40 hover:text-golden-amber transition-colors duration-200"
-          >
-            {showPassword ? (
-              <FiEyeOff className="w-5 h-5" />
-            ) : (
-              <FiEye className="w-5 h-5" />
-            )}
-          </button>
-        )}
-      </div>
-      {error && (
-        <p className="mt-1.5 text-sm text-red-600 font-medium">{error}</p>
-      )}
+      <input
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        className={`w-full ${Icon ? 'pl-12' : 'pl-5'} pr-5 py-3 border border-charcoal-grey/12 rounded-2xl focus:outline-none focus:ring-2 focus:ring-golden-amber/25 focus:border-golden-amber/35 text-charcoal-grey bg-charcoal-grey/2 hover:bg-charcoal-grey/4 transition-all duration-300 placeholder:text-charcoal-grey/30 text-sm font-medium shadow-sm hover:shadow-md focus:shadow-lg ${className}`}
+        {...props}
+      />
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-golden-amber/0 to-transparent group-focus-within:via-golden-amber/3 pointer-events-none transition-all duration-300"></div>
     </div>
   );
 };
 
 export default Input;
-

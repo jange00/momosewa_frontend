@@ -37,6 +37,7 @@ const AdminDashboard = () => (
   </div>
 );
 
+
 export const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -47,6 +48,7 @@ export const router = createBrowserRouter([
         element: <LandingPage />,
       },
       {
+
         path: "/login",
         element: <LoginPage />,
       },
@@ -78,6 +80,7 @@ export const router = createBrowserRouter([
         path: "/forgot-password",
         element: <ForgotPasswordPage />,
       },
+
     ],
   },
   // Customer Protected Routes
