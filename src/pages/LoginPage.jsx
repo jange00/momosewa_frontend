@@ -10,7 +10,7 @@ import { ROLE_DASHBOARD_ROUTES, USER_ROLES } from "../common/roleConstants";
 const LoginPage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    emailOrPhone: "",
+    emailOrPhones: "",
     password: "",
     rememberMe: false,
   });
