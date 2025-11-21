@@ -6,13 +6,13 @@ const Checkbox = ({
   className = "",
   ...props
 }) => {
-  const handleClick = () => {
-    // Create a synthetic event for the onChange handler
+  const handleChange = (e) => {
+    // Ensure the event has the correct structure
     const syntheticEvent = {
       target: {
         name: name || "",
         type: "checkbox",
-        checked: !checked,
+        checked: e.target.checked,
       },
     };
     onChange(syntheticEvent);
@@ -23,18 +23,17 @@ const Checkbox = ({
       <div className="relative">
         <input
           type="checkbox"
-          checked={checked}
-          onChange={onChange}
+          checked={checked || false}
+          onChange={handleChange}
           name={name}
           className="sr-only"
           {...props}
         />
         <div
-          onClick={handleClick}
           className={`
             w-5 h-5 rounded-md border-2 border-charcoal-grey/25
             transition-all duration-200
-            flex items-center justify-center
+            flex items-center justify-center pointer-events-none
             ${checked 
               ? 'bg-gradient-to-br from-deep-maroon to-[#7a2533] border-deep-maroon' 
               : 'bg-white group-hover:border-golden-amber/40'
